@@ -1,0 +1,105 @@
+@CHARSET "UTF-8";
+*{margin:0px; padding:0px;}
+ 
+ #wrapper{width:1000px;height:850px;margin:0 auto;}
+ #main{width:79%;height:70%; float:left; margin:0 auto; border-left: 1px dotted black;}
+ 
+#main .top {width:100%; height:7%; margin-top: 35px; }
+#main .middle{width:100%; height:36%; }
+#main .bottom {width:100%; height:33%; }
+
+#notice {
+	border: 1px solid black;
+	width: 700px;
+	margin : 0 auto;
+}
+#notice tr{
+	background-color: gray;
+}
+
+#notice th{
+	width: 100px;
+	text-align: center;
+	background-color: gray;
+}
+
+
+#notice td {
+	text-align: center;
+	background-color: #d9d9d9;
+}
+#notice td #inp{
+	float: right;
+}
+#navi{
+	width:20%;
+	height:70%; 
+	float:left;
+	margin:0 auto;
+	background-color: white;
+}
+#menu{
+	width:100%;
+	height:100%;
+	margin:auto;
+	background-color: lime;
+}
+
+#menu li{list-style-type:none; height:20px;}
+#menu p{height:60px;}
+
+/* #main input {width:100px;}
+ */
+h2{
+	text-align: center;
+}
+
+#header{
+		width:100%;
+		height:20%; 
+		float:left;
+		margin:0 auto;
+		background-color: red;
+}
+
+#header .top {height:35%;}
+#header .bottom {height:65%;}
+	
+#title{
+		position: relative;
+		heigth:100%;
+		line-height:
+		top: 40px;
+		text-align: center;
+}
+
+.login_btn{
+		
+}
+
+#footer{
+		width:100%;
+		height:10%;
+		margin:0 auto;
+		float:left;
+	}
+	
+h1{
+	color: white;
+	text-align: center;
+}
+
+#accordion {
+	padding: 10px;
+	margin-top: 50px;
+}
+
+#btn{
+	background-color: lime;
+}
+
+#login_form {
+		width: 700px;
+	margin : 0 auto;
+}
+
