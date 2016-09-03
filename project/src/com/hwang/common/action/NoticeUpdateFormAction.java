@@ -1,7 +1,6 @@
 package com.hwang.common.action;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,17 +10,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.hwang.employee.dao.NoticeDao;
 import com.hwang.employee.dto.NoticeDto;
 
-public class HomeAction implements Action {
+public class NoticeUpdateFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "project/home.jsp";
-		
+		String url = "project/notice_Update.jsp";
+		String noticenum = request.getParameter("noticenum");
+
+		NoticeDto nDto = new NoticeDto();
 		NoticeDao nDao = NoticeDao.getInstance();
-		List<NoticeDto> noticelist = nDao.selectAllNotice();
 		
-		request.setAttribute("noticelist", noticelist);
+		nDto = nDao.selectOneNoticeByNoticeNum(noticenum);
 		
+		request.setAttribute("notice", nDto);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

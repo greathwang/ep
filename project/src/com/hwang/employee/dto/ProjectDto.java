@@ -1,14 +1,13 @@
 package com.hwang.employee.dto;
 
-import java.sql.Timestamp;
 
 public class ProjectDto {
 	private String pjtcd;
 	private String pjt;
 	private String pjtdtl;
-	private Timestamp startdt;
-	private Timestamp enddt;
-	private Timestamp regdt;
+	private String startdt;
+	private String enddt;
+	private String regdt;
 	private String reguser;
 	
 	public ProjectDto() {
@@ -38,27 +37,27 @@ public class ProjectDto {
 		this.pjtdtl = pjtdtl;
 	}
 
-	public Timestamp getStartdt() {
+	public String getStartdt() {
 		return startdt;
 	}
 
-	public void setStartdt(Timestamp startdt) {
+	public void setStartdt(String startdt) {
 		this.startdt = startdt;
 	}
 
-	public Timestamp getEnddt() {
+	public String getEnddt() {
 		return enddt;
 	}
 
-	public void setEnddt(Timestamp enddt) {
+	public void setEnddt(String enddt) {
 		this.enddt = enddt;
 	}
 
-	public Timestamp getRegdt() {
+	public String getRegdt() {
 		return regdt;
 	}
 
-	public void setRegdt(Timestamp regdt) {
+	public void setRegdt(String regdt) {
 		this.regdt = regdt;
 	}
 

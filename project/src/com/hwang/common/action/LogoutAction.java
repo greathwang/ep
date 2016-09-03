@@ -12,7 +12,8 @@ public class LogoutAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url="EmployeeServlet?command=loginForm";
+		String url="LoginServlet";
+		
 		
 		HttpSession session = request.getSession();
 		session.invalidate();

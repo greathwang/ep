@@ -1,6 +1,5 @@
 package com.hwang.employee.dto;
 
-import java.sql.Timestamp;
 
 public class EmployeeDto {
 	private String 		empid;
@@ -19,13 +18,32 @@ public class EmployeeDto {
 	private String 		email;
 	private String 		phone;
 	private int			salary;
-	private Timestamp	hire_date;
-	private Timestamp	out_date;
+	private String		hire_date;
+	private String		out_date;
 	private int			manager;
-	private Timestamp	regidate;
+	private String		regidate;
+	private String		gender;
+	private String		birth;
 	
 	public EmployeeDto() {
 	}
+	
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getBirth() {
+		return birth;
+	}
+
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
+
 
 	public String getEmpid() {
 		return empid;
@@ -155,19 +173,19 @@ public class EmployeeDto {
 		this.salary = salary;
 	}
 
-	public Timestamp getHire_date() {
+	public String getHire_date() {
 		return hire_date;
 	}
 
-	public void setHire_date(Timestamp hire_date) {
+	public void setHire_date(String hire_date) {
 		this.hire_date = hire_date;
 	}
 
-	public Timestamp getOut_date() {
+	public String getOut_date() {
 		return out_date;
 	}
 
-	public void setOut_date(Timestamp out_date) {
+	public void setOut_date(String out_date) {
 		this.out_date = out_date;
 	}
 
@@ -179,23 +197,25 @@ public class EmployeeDto {
 		this.manager = manager;
 	}
 
-	public Timestamp getRegidate() {
+	public String getRegidate() {
 		return regidate;
 	}
 
-	public void setRegidate(Timestamp regidate) {
+	public void setRegidate(String regidate) {
 		this.regidate = regidate;
 	}
 
 	@Override
 	public String toString() {
 		return "EmployeeDto [empid=" + empid + ", pwd=" + pwd + ", empnum=" + empnum + ", first_name=" + first_name
-				+ ", last_name=" + last_name + ", reginun=" + reginum + ", emp_img=" + emp_img + ", emp_img_org="
+				+ ", last_name=" + last_name + ", reginum=" + reginum + ", emp_img=" + emp_img + ", emp_img_org="
 				+ emp_img_org + ", deptnum=" + deptnum + ", pnum=" + pnum + ", zipcode=" + zipcode + ", address="
 				+ address + ", detailaddress=" + detailaddress + ", email=" + email + ", phone=" + phone + ", salary="
 				+ salary + ", hire_date=" + hire_date + ", out_date=" + out_date + ", manager=" + manager
-				+ ", regidate=" + regidate + "]";
+				+ ", regidate=" + regidate + ", gender=" + gender + ", birth=" + birth + "]";
 	}
+
+
 	
 	
 }

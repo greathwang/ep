@@ -1,27 +1,28 @@
 package com.hwang.common.action;
 
 import java.io.IOException;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hwang.employee.dao.NoticeDao;
-import com.hwang.employee.dto.NoticeDto;
-
-public class HomeAction implements Action {
+public class NoticeInsertFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "project/home.jsp";
+		String url = "project/notice_Regi.jsp";
 		
-		NoticeDao nDao = NoticeDao.getInstance();
-		List<NoticeDto> noticelist = nDao.selectAllNotice();
+		Date d = new Date();
 		
-		request.setAttribute("noticelist", noticelist);
+		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd");
+		String str = dayTime.format(d);
 		
+		request.setAttribute("dayTime", str);
+		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

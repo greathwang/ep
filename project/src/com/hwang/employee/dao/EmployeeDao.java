@@ -58,10 +58,10 @@ public class EmployeeDao {
 				eDto.setEmail(rs.getString("email"));
 				eDto.setPhone(rs.getString("phone"));
 				eDto.setSalary(rs.getInt("salary"));
-				eDto.setHire_date(rs.getTimestamp("hire_date"));
-				eDto.setOut_date(rs.getTimestamp("out_date"));
+				eDto.setHire_date(rs.getString("hire_date"));
+				eDto.setOut_date(rs.getString("out_date"));
 				eDto.setManager(rs.getInt("manager"));
-				eDto.setRegidate(rs.getTimestamp("regidate"));
+				eDto.setRegidate(rs.getString("regidate"));
 				
 				list.add(eDto);
 			}
@@ -74,36 +74,51 @@ public class EmployeeDao {
 	}
 	
 	public int insertEmployee(EmployeeDto eDto){
-		String sql = "Insert into employee values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		int result=0;
+		StringBuilder sql = new StringBuilder();
+		 sql.append("Insert into employee (empid,pwd,empnum,first_name,last_name,reginum,emp_img,emp_img_org,deptnum,pnum,zipcode,address,detailaddress,email,phone,salary,manager)");
+		 sql.append("values(");
+		 sql.append("?");
+		 sql.append(",?");
+		 sql.append(",emp_seq");
+		 sql.append(",?");
+		 sql.append(",?");
+		 sql.append(",?");
+		 sql.append(",?");
+		 sql.append(",?");
+		 sql.append(",?");
+		 sql.append(",?");
+		 sql.append(",?");
+		 sql.append(",?");
+		 sql.append(",?");
+		 sql.append(",?");
+		 sql.append(",?");
+		 sql.append(",?");
+		 sql.append(",?)");		 
+		int result=-1;
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
 		try{
 			conn=DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql.toString());
 			
 			pstmt.setString(1, eDto.getEmpid());
 			pstmt.setString(2, eDto.getPwd());
-			pstmt.setString(3, eDto.getEmpnum());
-			pstmt.setString(4, eDto.getFirst_name());
-			pstmt.setString(5, eDto.getLast_name());
-			pstmt.setString(6, eDto.getReginum());
-			pstmt.setString(7, eDto.getEmp_img());
-			pstmt.setString(8, eDto.getEmp_img_org());
-			pstmt.setString(9, eDto.getDeptnum());
-			pstmt.setString(10, eDto.getPnum());
-			pstmt.setString(11, eDto.getZipcode());
-			pstmt.setString(12, eDto.getAddress());
-			pstmt.setString(13, eDto.getDetailaddress());
-			pstmt.setString(14, eDto.getEmail());
-			pstmt.setString(15, eDto.getPhone());
-			pstmt.setInt(16, eDto.getSalary());
-			pstmt.setTimestamp(17, eDto.getHire_date());
-			pstmt.setTimestamp(18, eDto.getOut_date());
-			pstmt.setInt(19, eDto.getManager());
-			pstmt.setTimestamp(20, eDto.getRegidate());
+			pstmt.setString(3, eDto.getFirst_name());
+			pstmt.setString(4, eDto.getLast_name());
+			pstmt.setString(5, eDto.getReginum());
+			pstmt.setString(6, eDto.getEmp_img());
+			pstmt.setString(7, eDto.getEmp_img_org());
+			pstmt.setString(8, eDto.getDeptnum());
+			pstmt.setString(9, eDto.getPnum());
+			pstmt.setString(10, eDto.getZipcode());
+			pstmt.setString(11, eDto.getAddress());
+			pstmt.setString(12, eDto.getDetailaddress());
+			pstmt.setString(13, eDto.getEmail());
+			pstmt.setString(14, eDto.getPhone());
+			pstmt.setInt(15, eDto.getSalary());
+			pstmt.setInt(16, eDto.getManager());
 			
 			result=pstmt.executeUpdate();
 		}catch(SQLException e){
@@ -146,7 +161,31 @@ public class EmployeeDao {
 	}
 	
 	public EmployeeDto selectOneEmpoyeeByNum(String empnum){
-		String sql = "select * from employee where empnum = ?";
+		String sql = "SELECT empid"
+					+	 " , pwd"
+					+    " , empnum"
+					+    " , first_name"
+					+    " , last_name"
+					+    " , EMP_REGI(reginum)"
+					+    " , EMP_GENDER(reginum)"
+					+    " , emp_birth(reginum)"
+					+    " , emp_img"
+					+    " , emp_img_org"
+					+    " , EMP_DEPT(deptnum)"
+					+    " , emp_posi(pnum)"
+					+    " , emp_zip(zipcode)"
+					+    " , address"
+					+    " , detailaddress"
+					+    " , email"
+					+    " , phone"
+					+    " , salary"
+					+    " , hire_date"
+					+    " , out_date"
+					+    " , manager"
+					+    " , regidate "
+					+ "FROM EMPLOYEE "
+					+ "WHERE empnum = ?"
+				;
 		
 		EmployeeDto eDto = null;
 		Connection conn = null;
@@ -169,21 +208,23 @@ public class EmployeeDao {
 				eDto.setEmpnum(rs.getString("empnum"));
 				eDto.setFirst_name(rs.getString("first_name"));
 				eDto.setLast_name(rs.getString("last_name"));
-				eDto.setReginum(rs.getString("reginum"));
+				eDto.setReginum(rs.getString("EMP_REGI(reginum)"));
+				eDto.setGender(rs.getString("EMP_GENDER(reginum)"));
+				eDto.setBirth(rs.getString("emp_birth(reginum)"));
 				eDto.setEmp_img(rs.getString("emp_img"));
 				eDto.setEmp_img_org(rs.getString("emp_img_org"));
-				eDto.setDeptnum(rs.getString("deptnum"));
-				eDto.setPnum(rs.getString("pnum"));
-				eDto.setZipcode(rs.getString("zipcode"));
+				eDto.setDeptnum(rs.getString("EMP_DEPT(deptnum)"));
+				eDto.setPnum(rs.getString("emp_posi(pnum)"));
+				eDto.setZipcode(rs.getString("emp_zip(zipcode)"));
 				eDto.setAddress(rs.getString("address"));
 				eDto.setDetailaddress(rs.getString("detailaddress"));
 				eDto.setEmail(rs.getString("email"));
 				eDto.setPhone(rs.getString("phone"));
 				eDto.setSalary(rs.getInt("salary"));
-				eDto.setHire_date(rs.getTimestamp("hire_date"));
-				eDto.setOut_date(rs.getTimestamp("out_date"));
+				eDto.setHire_date(rs.getString("hire_date"));
+				eDto.setOut_date(rs.getString("out_date"));
 				eDto.setManager(rs.getInt("manager"));
-				eDto.setRegidate(rs.getTimestamp("regidate"));
+				eDto.setRegidate(rs.getString("regidate"));
 				
 			}
 		}catch(Exception e){
@@ -226,16 +267,25 @@ public class EmployeeDao {
 		return eDto;
 	}
 	
-	public int insertEmployee(EmployeeDto eDto){
-		int result = -1;
+	public int EmployeeDelete(String empnum){
+		String sql ="delete from employee where empnum=?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		StringBuilder sql = new StringBuilder();
-		sql.append("insert into employee			");
-		sql.append("values(							");
-		sql.append("			,?					");
 		
+		int result = -1;
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, empnum);
+			
+			result = pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt);
+		}
 		return result;
 	}
 }

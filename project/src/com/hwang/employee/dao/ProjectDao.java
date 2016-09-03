@@ -45,9 +45,9 @@ public class ProjectDao {
 				pDto.setPjtcd(rs.getString("pjtcd"));
 				pDto.setPjt(rs.getString("pjt"));
 				pDto.setPjtdtl(rs.getString("pjtdtl"));
-				pDto.setStartdt(rs.getTimestamp("startdt"));
-				pDto.setEnddt(rs.getTimestamp("enddt"));
-				pDto.setRegdt(rs.getTimestamp("regdt"));
+				pDto.setStartdt(rs.getString("startdt"));
+				pDto.setEnddt(rs.getString("enddt"));
+				pDto.setRegdt(rs.getString("regdt"));
 				pDto.setReguser(rs.getString("reguser"));
 				
 				list.add(pDto);
@@ -82,9 +82,9 @@ public class ProjectDao {
 				pDto.setPjtcd(rs.getString("pjtcd"));
 				pDto.setPjt(rs.getString("pjt"));
 				pDto.setPjtdtl(rs.getString("pjtdtl"));
-				pDto.setStartdt(rs.getTimestamp("startdt"));
-				pDto.setEnddt(rs.getTimestamp("enddt"));
-				pDto.setRegdt(rs.getTimestamp("regdt"));
+				pDto.setStartdt(rs.getString("startdt"));
+				pDto.setEnddt(rs.getString("enddt"));
+				pDto.setRegdt(rs.getString("regdt"));
 				pDto.setReguser(rs.getString("reguser"));
 			}
 		}catch(Exception e){
@@ -93,5 +93,12 @@ public class ProjectDao {
 			DBManager.close(conn, pstmt, rs);
 		}
 		return pDto;
+	}
+	
+	public int projectInsert(ProjectDto pDto){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		
 	}
 }
