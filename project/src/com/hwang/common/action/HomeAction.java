@@ -8,7 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hwang.employee.controller.PageController;
 import com.hwang.employee.dao.NoticeDao;
+import com.hwang.employee.dao.PageDao;
 import com.hwang.employee.dto.NoticeDto;
 
 public class HomeAction implements Action {
@@ -18,7 +20,14 @@ public class HomeAction implements Action {
 		String url = "project/home.jsp";
 		
 		NoticeDao nDao = NoticeDao.getInstance();
-		List<NoticeDto> noticelist = nDao.selectAllNotice();
+//		List<NoticeDto> noticelist = nDao.selectAllNotice();
+		
+		int curPage=0;
+		if(request.getParameter("curPage")!=null){
+		 curPage = Integer.parseInt(request.getParameter("curPage"));
+		}
+		
+		List<NoticeDto> noticelist = nDao.selectNoticePage(curPage, 5);
 		
 		request.setAttribute("noticelist", noticelist);
 		

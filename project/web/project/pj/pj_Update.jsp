@@ -6,6 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/Layout_style.css">
+<script type="text/javascript">
+
+</script>
 <style type="text/css">
 textarea{
 	resize:none;
@@ -55,6 +58,7 @@ textarea{
 						<input type="button" value="취소">
 					</td>
 				</tr>
+		
 			</table>
 			</form>
 		</div>

@@ -23,8 +23,6 @@ public class NoticeDetailAction implements Action {
 		String noticenum = request.getParameter("noticenum");
 		
 		NoticeDao nDao = NoticeDao.getInstance();
-		Cookie[] cookies =request.getCookies();
-		 
 		
 		nDao.updateHit(noticenum);
 		

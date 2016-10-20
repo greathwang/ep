@@ -41,6 +41,11 @@
 						<td>${notice.hit }</td>
 					</tr>
 					</c:forEach>
+					<tr>
+						<td colspan="5">
+							<a class="more" href="EmployeeServlet?command=notice_list">more</a>
+						</td>
+					</tr>
 				</table>
 			</div>
 		</div>

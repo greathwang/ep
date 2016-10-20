@@ -8,6 +8,7 @@ import com.hwang.common.action.EmpInsertAction;
 import com.hwang.common.action.EmpInsertFormAction;
 import com.hwang.common.action.EmpListAction;
 import com.hwang.common.action.EmpUpdateFormAction;
+import com.hwang.common.action.EmployeeUpdateAction;
 import com.hwang.common.action.HomeAction;
 //import com.hwang.common.action.LoginAction;
 import com.hwang.common.action.LogoutAction;
@@ -18,7 +19,8 @@ import com.hwang.common.action.NoticeInsertFormAction;
 import com.hwang.common.action.NoticeListAction;
 import com.hwang.common.action.NoticeUpdate;
 import com.hwang.common.action.NoticeUpdateFormAction;
-import com.hwang.common.action.ProjectInsertForm;
+import com.hwang.common.action.ProjectInsertAction;
+import com.hwang.common.action.ProjectInsertFormAction;
 import com.hwang.common.action.ProjectListAction;
 import com.hwang.common.action.ProjectListDetailAction;
 import com.hwang.common.action.ReplyInsertAction;
@@ -47,7 +49,7 @@ public class ActionFactory {
 			action = new EmpListAction();
 		}else if(command.equals("emp_detail")){
 			action = new EmpDetailAction();
-		}else if(command.equals("emp_update")){
+		}else if(command.equals("emp_update_form")){
 			action = new EmpUpdateFormAction();
 		}else if(command.equals("logout")){
 			action = new LogoutAction();
@@ -64,7 +66,7 @@ public class ActionFactory {
 		}else if(command.equals("emp_delete")){
 			action = new EmpDeleteAction();
 		}else if(command.equals("pj_regi_form")){
-			action = new ProjectInsertForm();
+			action = new ProjectInsertFormAction();
 		}else if(command.equals("notice_regi_form")){
 			action = new NoticeInsertFormAction();
 		}else if(command.equals("notice_detail")){
@@ -81,6 +83,10 @@ public class ActionFactory {
 			action = new ReplyInsertAction();
 		}else if(command.equals("addr_search")){
 			action = new AddrSearchAction();
+		}else if(command.equals("pj_regi")){
+			action = new ProjectInsertAction();
+		}else if(command.equals("emp_update")){
+			action = new EmployeeUpdateAction();
 		}
 		return action;
 	}

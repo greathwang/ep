@@ -51,8 +51,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("last_name", emp.getLast_name());
 			session.setAttribute("empnum", emp.getEmpnum());
 		}
-		
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

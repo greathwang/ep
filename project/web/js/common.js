@@ -28,12 +28,15 @@ $(function(){
 });
 
 $( function() {
-    $( "#datepicker1" ).datepicker({
+    $( "#startdt" ).datepicker({
     	dateFormat: "yy-mm-dd"
     });	
     $( "#datepicker2" ).datepicker({
     	dateFormat: "yy-mm-dd"
     });	
+    $( "#enddt" ).datepicker({
+    	dateFormat: "yy-mm-dd"
+    });
 });
 
 $( function(){

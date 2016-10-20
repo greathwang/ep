@@ -14,7 +14,7 @@ public class NoticeUpdate implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "EmployeeServlet?command=notice_list";
+		String url = "EmployeeServlet?command=notice_detail";
 		int result = -1;
 		
 		NoticeDto nDto = new NoticeDto();
@@ -26,6 +26,8 @@ public class NoticeUpdate implements Action {
 		NoticeDao nDao = NoticeDao.getInstance();
 		result = nDao.NoticeUpdate(nDto);
 
+		request.setAttribute("noticenum", nDto.getNoticenum());
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

@@ -186,4 +186,55 @@ public class NoticeDao {
 		}
 		return result;
 	}
+	
+	public List<NoticeDto> selectNoticePage(int curPage, int numPerPage){
+		StringBuilder sql = new StringBuilder();
+		sql.append("select *										");
+		sql.append("  from (select rownum r, a.*					");
+		sql.append("		  from (select *						");
+		sql.append("				  from notice					");
+		sql.append("				 order by NOTICENUM desc) a)	");
+		sql.append(" where r										");
+		sql.append("between ? and ?									");
+		
+		List<NoticeDto> list = new ArrayList<NoticeDto>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try{
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			
+			if(curPage == 0){
+				curPage = 1;
+			}
+			int start = (curPage -1) * numPerPage +1;
+			int end = start + numPerPage -1;
+			
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				NoticeDto nDto = new NoticeDto();
+				
+				nDto.setContent(rs.getString("content"));
+				nDto.setEmpid(rs.getString("empid"));
+				nDto.setHit(rs.getString("hits"));
+				nDto.setNoticenum(rs.getString("noticenum"));
+				nDto.setTitle(rs.getString("title"));
+				nDto.setWritedate(rs.getString("writedate"));
+				
+				list.add(nDto);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBManager.close(conn, pstmt, rs);
+		}
+		return list;
+	}
 }

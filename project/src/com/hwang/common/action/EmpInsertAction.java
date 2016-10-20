@@ -39,7 +39,7 @@ public class EmpInsertAction implements Action {
 		eDto.setEmail(multi.getParameter("first_email")+"@"+multi.getParameter("last_email"));
 		eDto.setReginum(multi.getParameter("first_reginum")+multi.getParameter("last_reginum"));
 		eDto.setPhone(multi.getParameter("fir_phone")+multi.getParameter("mid_phone")+multi.getParameter("las_phone"));
-		eDto.setZipcode(multi.getParameter("first_zipcode")+multi.getParameter("last_zipcode"));
+		eDto.setZipcode(multi.getParameter("zipcode"));
 		eDto.setAddress(multi.getParameter("address"));
 		eDto.setDetailaddress(multi.getParameter("detail_address"));
 		

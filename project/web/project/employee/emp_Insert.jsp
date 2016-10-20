@@ -16,9 +16,7 @@
 <script type="text/javascript" src="js/common.js"></script>
 
 <script type="text/javascript">
-$(function(){
-	$("#tabs").tabs();
-});
+
 
 $(function(){
     function readURL(input) {
@@ -43,25 +41,12 @@ $(function(){
 });
 </script>
 
-<style>
-	#tabs{margin-top: 20px;}
-	#main{height: 1000px}
-	.input0 { width:70px;}
-	.input1 { width:150px;}
-	.input2 { width:200px;}
-	.input3 { width:300px;}
-	.input4 { width:25px;}
-	.input5 { width:30px;}
-	#login_form span {display: inline-block; width:120px;}
-	#login_form p {margin-top:15px;}
-	
-
-</style>
 </head>
 <body>
 	<div id="wrapper">
 		<jsp:include page="../header.jsp"></jsp:include>
 		<jsp:include page="../navi.jsp"></jsp:include>
+		<div id="main_auto">
 		<div id="main">
 			<div class="top">
 				<h2>사원 등록</h2>
@@ -73,12 +58,13 @@ $(function(){
 						<input class="input1" name="empid" id="empid" type="text" >
 						<input type="button" value="중복 체크" onclick="idCheck()">
 					</p>
-					<p> <span>비밀번호</span> <input class="input1" name="pwd" id="pwd" type="password" >  
-						
-						<input type="file" name="emp_imgpath" id="emp_imgpath">
-						<img name="emp_img" id="emp_img"></p>
-						
+					<p> <span>비밀번호</span> <input class="input1" name="pwd" id="pwd" type="password" > </p> 
 					<p> <span>비밀번호 확인</span> <input class="input1" name="pwd_chk" id="pwd_chk" type="password" ></p>
+					<p>	
+						<span>사  진</span>
+						<img width="150px" height="160px" name="emp_img" id="emp_img" src="upload/no_image.gif">
+						<input type="file" name="emp_imgpath" id="emp_imgpath">
+					</p>	
 					<p> <span>성</span> <input class="input1" name="first_nm" id="first_nm" type="text" ></p>
 					<p> <span>이름</span> <input class="input1" name="last_nm" id="last_nm" type="text" ></p>
 					<p> <span>이메일</span> 
@@ -130,45 +116,28 @@ $(function(){
 					<p> <span>급여</span> <input class ="input1" type="text" name="salary" id="salary"></p>
 					<p> <span>입사일</span> <input class ="input1" type="text" name="hire_date" id="datepicker1" value="${dayTime }" readonly="readonly"></p>
 					<p> <span>퇴사일</span> <input class ="input1" type="text" name="out_date" id="datepicker2" disabled="disabled"></p>
-					<div id="tabs">
-						<ul>
-							<li><a href="#tabs-1">경력</a></li>
-							<li><a href="#tabs-2">학력</a></li>
-							<li><a href="#tabs-3">자격증</a></li>
-						</ul>
-						<div id="tabs-1">
-							<p>경력</p>
-						</div>
-						<div id="tabs-2">
-							<p>학력</p>
-						</div>
-						<div id="tabs-3">
-							<p>자격증</p>
-						</div>
-					</div>
 					<p> 
 						관리자  &nbsp;<input type="radio" name="manager" value="1"  checked="checked">  &nbsp;&nbsp;&nbsp; 
 						일반사원 &nbsp;<input type="radio" name="manager" value="0">
 					</p>
-					<p> <input type="submit" value="등록"></p>
+					<p> <input class="btn" type="submit" value="등록"></p>
 				</div>
+				
 			</form>
-			
+			</div>
 	<div id="dialog-form" title="주소 검색">
 	  <p class=""></p>
 	 
-	  <form action="" id="frm" method="post">
-	    <fieldset>
+	  <!-- <form action="" id="frm" method="post"> -->
 	      <label for="search"></label>
 	      <input type="text" name="addrtext" id="addrtext" class="text ui-widget-content ui-corner-all">
 	      <input type="button" id="address_find" value="검색">
 	      <!-- Allow form submission with keyboard without duplicating the dialog button -->
 	      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-	    </fieldset>
 	    <table id="addrTable">
 			
 	    </table>
-	  </form>
+	  <!-- </form> -->
 	</div>
 
 		</div>

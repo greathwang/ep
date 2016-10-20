@@ -41,6 +41,11 @@
 				</tr>
 				</c:forEach>
 			</table>
+				<nav align="center">
+					<c:forEach var="i" begin="${pDto.getFirstPage() }" end="${pDto.getLastPage() }" varStatus="num">
+						<a href="EmployeeServlet?command=notice_list&curPage=${i }">${num.count }</a>
+					</c:forEach>
+				</nav>
 		</div>
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>

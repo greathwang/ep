@@ -26,7 +26,14 @@ public class EmployeeDao {
 	}
 	
 	public List<EmployeeDto> selectAllEmployees(){
-		String sql = "select * from employee order by empnum";
+		StringBuilder sql = new StringBuilder();
+		sql.append("select empnum				");
+		sql.append("	 , first_name			");
+		sql.append("	 , last_name			");
+		sql.append("	 , emp_posi(pnum)		");
+		sql.append("	 , regidate				");
+		sql.append("  from employee				");
+		sql.append(" order by empnum			");
 		
 		List<EmployeeDto> list = new ArrayList<EmployeeDto>();
 		Connection conn = null;
@@ -37,30 +44,30 @@ public class EmployeeDao {
 			conn = DBManager.getConnection();
 			stmt = conn.createStatement();
 			
-			rs = stmt.executeQuery(sql);
+			rs = stmt.executeQuery(sql.toString());
 			
 			while(rs.next()){
 				EmployeeDto eDto = new EmployeeDto();
 				
-				eDto.setEmpid(rs.getString("empid"));
-				eDto.setPwd(rs.getString("pwd"));
+//				eDto.setEmpid(rs.getString("empid"));
+//				eDto.setPwd(rs.getString("pwd"));
 				eDto.setEmpnum(rs.getString("empnum"));
 				eDto.setFirst_name(rs.getString("first_name"));
 				eDto.setLast_name(rs.getString("last_name"));
-				eDto.setReginum(rs.getString("reginum"));
-				eDto.setEmp_img(rs.getString("emp_img"));
-				eDto.setEmp_img_org(rs.getString("emp_img_org"));
-				eDto.setDeptnum(rs.getString("deptnum"));
-				eDto.setPnum(rs.getString("pnum"));
-				eDto.setZipcode(rs.getString("zipcode"));
-				eDto.setAddress(rs.getString("address"));
-				eDto.setDetailaddress(rs.getString("detailaddress"));
-				eDto.setEmail(rs.getString("email"));
-				eDto.setPhone(rs.getString("phone"));
-				eDto.setSalary(rs.getInt("salary"));
-				eDto.setHire_date(rs.getString("hire_date"));
-				eDto.setOut_date(rs.getString("out_date"));
-				eDto.setManager(rs.getInt("manager"));
+//				eDto.setReginum(rs.getString("reginum"));
+//				eDto.setEmp_img(rs.getString("emp_img"));
+//				eDto.setEmp_img_org(rs.getString("emp_img_org"));
+//				eDto.setDeptnum(rs.getString("deptnum"));
+				eDto.setPnum(rs.getString("emp_posi(pnum)"));
+//				eDto.setZipcode(rs.getString("zipcode"));
+//				eDto.setAddress(rs.getString("address"));
+//				eDto.setDetailaddress(rs.getString("detailaddress"));
+//				eDto.setEmail(rs.getString("email"));
+//				eDto.setPhone(rs.getString("phone"));
+//				eDto.setSalary(rs.getInt("salary"));
+//				eDto.setHire_date(rs.getString("hire_date"));
+//				eDto.setOut_date(rs.getString("out_date"));
+//				eDto.setManager(rs.getInt("manager"));
 				eDto.setRegidate(rs.getString("regidate"));
 				
 				list.add(eDto);
@@ -173,7 +180,7 @@ public class EmployeeDao {
 					+    " , emp_img_org"
 					+    " , EMP_DEPT(deptnum)"
 					+    " , emp_posi(pnum)"
-					+    " , emp_zip(zipcode)"
+					+    " , zipcode"
 					+    " , address"
 					+    " , detailaddress"
 					+    " , email"
@@ -215,7 +222,7 @@ public class EmployeeDao {
 				eDto.setEmp_img_org(rs.getString("emp_img_org"));
 				eDto.setDeptnum(rs.getString("EMP_DEPT(deptnum)"));
 				eDto.setPnum(rs.getString("emp_posi(pnum)"));
-				eDto.setZipcode(rs.getString("emp_zip(zipcode)"));
+				eDto.setZipcode(rs.getString("zipcode"));
 				eDto.setAddress(rs.getString("address"));
 				eDto.setDetailaddress(rs.getString("detailaddress"));
 				eDto.setEmail(rs.getString("email"));

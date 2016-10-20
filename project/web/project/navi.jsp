@@ -23,7 +23,7 @@
 			<p>
 			<ul>
 				<li><a href="EmployeeServlet?command=emp_list"> 사원 정보 목록</a></li>
-				<li><a href="EmployeeServlet?command=emp_update"> 사원 정보 수정</a></li>
+				<li><a href="EmployeeServlet?command=emp_update_form"> 사원 정보 수정</a></li>
 				<li><a href="EmployeeServlet?command=emp_insert_form"> 사원 정보 등록</a></li>
 				
 			</ul>

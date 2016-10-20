@@ -24,7 +24,7 @@
 	<div id="wrapper">
 		<jsp:include page="../header.jsp"></jsp:include>
 		<jsp:include page="../navi.jsp"></jsp:include>
-		<div id="main">
+		<div id="main_auto">
 			<div class="top">
 			<h2>사원 정보 상세</h2>
 			</div>
@@ -102,7 +102,7 @@
 				<tr>
 					<td id="btn" colspan="4">
 						<input type="submit" value="목록">
-						<input type="button" value="수정" onclick="location.href='EmployeeServlet?command=emp_update&empnum=${employee.empnum }'">
+						<input type="button" value="수정" onclick="location.href='EmployeeServlet?command=emp_update_form&empnum=${employee.empnum }'">
 						<input type="button" value="삭제" onclick="location.href='EmployeeServlet?command=emp_delete&empnum=${employee.empnum}'">
 					</td>
 				</tr>

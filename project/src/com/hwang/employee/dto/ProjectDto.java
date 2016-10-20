@@ -9,9 +9,37 @@ public class ProjectDto {
 	private String enddt;
 	private String regdt;
 	private String reguser;
+	private String empnum;
+	private String perrolecd;
+	private String skill;
 	
 	public ProjectDto() {
 	}
+	
+	public String getEmpnum() {
+		return empnum;
+	}
+	
+	public String getSkill() {
+		return skill;
+	}
+
+	public void setSkill(String skill) {
+		this.skill = skill;
+	}
+
+	public void setEmpnum(String empnum) {
+		this.empnum = empnum;
+	}
+
+	public String getPerrolecd() {
+		return perrolecd;
+	}
+
+	public void setPerrolecd(String perrolecd) {
+		this.perrolecd = perrolecd;
+	}
+
 
 	public String getPjtcd() {
 		return pjtcd;
@@ -72,8 +100,10 @@ public class ProjectDto {
 	@Override
 	public String toString() {
 		return "ProjectDto [pjtcd=" + pjtcd + ", pjt=" + pjt + ", pjtdtl=" + pjtdtl + ", startdt=" + startdt
-				+ ", enddt=" + enddt + ", regdt=" + regdt + ", reguser=" + reguser + "]";
+				+ ", enddt=" + enddt + ", regdt=" + regdt + ", reguser=" + reguser + ", empnum=" + empnum
+				+ ", perrolecd=" + perrolecd + ", skill=" + skill + "]";
 	}
+
 	
 	
 }

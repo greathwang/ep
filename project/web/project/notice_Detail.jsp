@@ -93,7 +93,7 @@ textarea{
 			
 			<div class="cmt">
 				<input type="hidden" id="noticenum" value="${notice.noticenum }">
-				<input type="hidden" id="empid" value="${notice.empid }">
+				<input type="hidden" id="empid" value="${empid }">
 				<table>
 					<thead>
 					<tr>

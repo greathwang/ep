@@ -26,17 +26,17 @@ public class ReplyDao {
 	
 	public List<ReplyDto> selectAllReply(String noticenum){
 		StringBuilder sql = new StringBuilder();
-		sql.append("select r.replyno 		");
-		sql.append("	 , r.noticenum		");
-		sql.append("	 , r.content		");
-		sql.append("	 , r.writedate		");
-		sql.append("	 , e.first_name		");
-		sql.append("	 , e.last_name		");
-		sql.append("  from reply r			");
-		sql.append("	 , notice n			");
-		sql.append("	 , employee e		");
-		sql.append(" where n.noticenum = ?	");
-		sql.append("order by r.replyno		");
+		sql.append("select r.replyno 			");
+		sql.append("	 , r.noticenum			");
+		sql.append("	 , r.content			");
+		sql.append("	 , r.writedate			");
+		sql.append("	 , e.first_name			");
+		sql.append("	 , e.last_name			");
+		sql.append("  from reply r				");
+		sql.append("  join employee e			");
+		sql.append("	on r.empnum = e.empnum	");
+		sql.append(" where r.noticenum = ?		");
+		sql.append("order by r.replyno			");
 		
 		List<ReplyDto> list = new ArrayList<ReplyDto>();
 		Connection conn = null;

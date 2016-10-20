@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:if test="${empty empid}">
-	<jsp:forward page="../EmployeeServlet"/>
-</c:if>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +13,7 @@
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <script type="text/javascript" src="js/navi.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
+
 </head>
 <body>
 	<div id="wrapper">
@@ -51,12 +50,18 @@
 				<c:forEach var="pj" items="${pjlist }">
 				<tr>
 					<td>${pj.pjtcd }</td>
-					<td><a href="EmployeeServlet?command=pj_detail&pjtcd=${pj.pjtcd }">${pj.reguser }</a></td>
-					<td>${pj.pjt }</td>
+					<td>${pj.reguser }</td>
+					<td><a href="EmployeeServlet?command=pj_detail&pjtcd=${pj.pjtcd }">${pj.pjt }</a></td>
 					<td>${pj.regdt }</td>
 				</tr>
 				</c:forEach>
 			</table>
+				<nav align="center">
+				<c:forEach var="i" begin="${pDto.getFirstPage() }" varStatus="num" end="${pDto.getLastPage() }">
+						<a href="EmployeeServlet?command=pj_list&curPage=${i }">${num.count }
+						</a>
+				</c:forEach>
+				</nav>
 			</form>
 			</div>
 		</div>
